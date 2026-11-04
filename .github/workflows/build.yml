@@ -1,0 +1,32 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  msix:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compilar o programa
+        run: cmd /c compilar.bat
+
+      - name: Gerar o pacote MSIX
+        run: cmd /c empacotar_msix.bat
+
+      - name: Guardar o pacote
+        uses: actions/upload-artifact@v4
+        with:
+          name: Abrir_Gaveta_PDV-msix
+          path: Abrir_Gaveta_PDV.msix
