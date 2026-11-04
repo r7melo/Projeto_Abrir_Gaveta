@@ -546,7 +546,7 @@ class Residente:
         self.hwnd = win32gui.CreateWindow(atom, TITULO, 0, 0, 0, 0, 0, 0, 0, classe.hInstance, None)
         self.icone = self._carregar_icone()
         self._bandeja(win32gui.NIM_ADD)
-        win32gui.SetTimer(self.hwnd, ID_TIMER, 1000, None)
+        ctypes.windll.user32.SetTimer(self.hwnd, ID_TIMER, 1000, None)
         self.recarregar()
 
     # -- ícone e menu da bandeja
@@ -633,7 +633,7 @@ class Residente:
     def ao_destruir(self, hwnd, msg, wparam, lparam):
         try:
             win32gui.UnregisterHotKey(self.hwnd, ID_ATALHO)
-            win32gui.KillTimer(self.hwnd, ID_TIMER)
+            ctypes.windll.user32.KillTimer(self.hwnd, ID_TIMER)
         except Exception:
             pass
         self._bandeja(win32gui.NIM_DELETE)

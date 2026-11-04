@@ -11,7 +11,7 @@
   <Identity
     Name="ANTONIOROMARIOCARLOSDEMEL.AbrirGavetaPDV"
     Publisher="CN=6F9368AA-FD35-4CBA-A142-E08828C35C4D"
-    Version="1.0.3.0"
+    Version="1.0.4.0"
     ProcessorArchitecture="x64" />
 
   <Properties>
